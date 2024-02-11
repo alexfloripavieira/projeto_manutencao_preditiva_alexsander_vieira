@@ -5,10 +5,9 @@ import joblib
 app = Flask(__name__)
 
 # Load the trained models
-models = []
-for i in range(1, 2):
-    model = joblib.load(f'./modelo_random_forest_{i}.pkl')
-    models.append(model)
+def load_model(model_number):
+    model = joblib.load(f'./modelo_random_forest_{model_number}.pkl')
+    return model
 
 # Endpoint to predict using the models
 @app.route('/predict', methods=['POST'])
@@ -17,17 +16,18 @@ def predict():
         # Get the request data
         data = request.get_json()
 
-        # Iterate over the models to make predictions for each one
-        predictions = []
-        for i, model in enumerate(models, start=1):
-            # Assuming the request data contains features for prediction
-            features = np.array(data['features'])
+        # Get the model number and features from the request data
+        model_number = data['model_number']
+        features_list = data['features']
 
-            # Make prediction using the model
-            prediction = model.predict(features.reshape(1, -1))[0]
-            predictions.append({'model': i, 'prediction': prediction})
+        # Load the specified model
+        model = load_model(model_number)
 
-        return jsonify(predictions), 200
+        # Make prediction using the model
+        features = np.array(features_list)
+        prediction = model.predict(features.reshape(1, -1))[0]
+
+        return jsonify({'model': model_number, 'prediction': prediction}), 200
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
