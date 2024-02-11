@@ -33,23 +33,21 @@ pip install -r requirements.txt
 ### Após a etapa de Treinamento e Avaliação do Modelo, execute o arquivo `App.py` no terminal para iniciar o servidor Flask que irá lidar com as solicitações de predição.
 
 ```bash
-Copy code
 python3 App.py
 ```
 
 ### Uma vez que o servidor esteja em execução, você pode enviar dados para predição executando o arquivo `enviar_dados.py` no terminal.
 
 ```bash
-Copy code
 python3 enviar_dados.py
 ```
 
 ## Conteúdo do Repositório
 
-notebooks/: Contém os notebooks Jupyter para cada etapa do projeto.
-dados/: Contém os arquivos de dados necessários para treinar e testar o modelo.
-modelos/: Contém os arquivos de modelo treinado.
-README.md: Este arquivo que fornece uma visão geral do projeto e instruções de configuração e execução.
+ - notebooks/: Contém os notebooks Jupyter para cada etapa do projeto.
+ - dados/: Contém os arquivos de dados necessários para treinar e testar o modelo.
+ - modelos/: Contém os arquivos de modelo treinado.
+ - README.md: Este arquivo que fornece uma visão geral do projeto e instruções de configuração e execução.
 
 ## Contribuição
 
