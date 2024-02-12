@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Load the trained models
 def load_model(model_number):
-    model = joblib.load(f'./modelo_random_forest_{model_number}.pkl')
+    model = joblib.load(f'./modelos/modelo_random_forest_{model_number}.pkl')
     return model
 
 # Endpoint to predict using the models
